@@ -13,9 +13,6 @@ class IssuesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Issue::class, 100)->create([
-            'user_id' => User::inRandomOrder()->first()->id
-            ]
-        );
+        factory(Issue::class, 100)->create();
     }
 }
