@@ -13,7 +13,7 @@
                         <article>
                             <div class="level">
                                 <h4 class="flex">
-                                    <a href="#">{{ $issue->title}}</a>
+                                <a href="{{ route('issues.show', $issue) }}">{{ $issue->title}}</a>
                                 </h4>
                             </div>
 

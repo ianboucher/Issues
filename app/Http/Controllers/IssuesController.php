@@ -48,7 +48,7 @@ class IssuesController extends Controller
      */
     public function show(Issue $issue)
     {
-        //
+        return view('issues.show', ['issue' => $issue]);
     }
 
     /**

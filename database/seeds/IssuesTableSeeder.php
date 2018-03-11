@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Issue;
+use App\User;
 
 class IssuesTableSeeder extends Seeder
 {
@@ -12,6 +13,9 @@ class IssuesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Issue::class, 100)->create();
+        factory(Issue::class, 100)->create([
+            'user_id' => User::inRandomOrder()->first()->id
+            ]
+        );
     }
 }
