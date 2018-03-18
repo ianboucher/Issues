@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Organisation;
 use Illuminate\Http\Request;
 
-class OrganisationController extends Controller
+class OrganisationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,9 @@ class OrganisationController extends Controller
      */
     public function index()
     {
-        //
+        $organisations = Organisation::all();
+
+        return view('admin.organisations.index', ['organisations' => $organisations]);
     }
 
     /**

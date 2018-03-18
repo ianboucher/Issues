@@ -28,6 +28,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li><a class="nav-link" href="{{ route('issues.index') }}">Issues</a></li>
+                        <li><a class="nav-link" href="{{ route('organisations.index') }}">Organisations</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

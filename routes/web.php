@@ -18,4 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('issues', 'IssuesController');
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('organisations', 'OrganisationsController');
+    Route::resource('issues', 'IssuesController');
+});
+

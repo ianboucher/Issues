@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Issue;
+use App\Organisation;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class IssuesController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Issue::class);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,10 @@ class IssuesController extends Controller
      */
     public function index()
     {
-        $issues = Issue::all();
+        $organisation = Organisation::find(Auth::user()->organisation_id);
+        
+        $issues = $organisation->issues->all();
+        // $issues = Issue::all();
 
         return view('issues.index', ['issues' => $issues]);
     }
@@ -48,6 +58,7 @@ class IssuesController extends Controller
      */
     public function show(Issue $issue)
     {
+        // $this->authorize('view', $issue);
         return view('issues.show', ['issue' => $issue]);
     }
 

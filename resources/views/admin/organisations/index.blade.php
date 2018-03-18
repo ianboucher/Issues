@@ -6,20 +6,16 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Issues</div>
+                <div class="panel-heading">Organisations</div>
 
                 <div class="panel-body">
-                    @foreach ($issues as $issue)
+                    @foreach ($organisations as $organisation)
                         <article>
                             <div class="level">
                                 <h4 class="flex">
-                                    <a href="{{ route('issues.show', $issue) }}">{{ $issue->title}}</a>
+                                    <a href="{{ route('organisations.show', $organisation) }}">{{ $organisation->name}}</a>
                                 </h4>
-                                <p>Organisation ID: {{ $issue->organisation_id }}
-                            </div>
-
-                            <div class="body">
-                                {{ $issue->description }}
+                                <p>Organisation ID: {{ $organisation->id }}
                             </div>
                         </article>
                         <hr/>
