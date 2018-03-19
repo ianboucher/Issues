@@ -19,7 +19,7 @@ class IssuePolicy
      */
     public function view(User $user, Issue $issue)
     {
-        return $user->organisation_id === $issue->organisation_id;
+        return $user->organisation_id === $issue->organisation_id || $user->hasRole('admin');
     }
 
     /**

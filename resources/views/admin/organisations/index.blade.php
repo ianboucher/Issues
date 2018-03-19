@@ -15,6 +15,7 @@
                                 <h4 class="flex">
                                     <a href="{{ route('organisations.show', $organisation) }}">{{ $organisation->name}}</a>
                                 </h4>
+                                <a href="{{ route('organisation.issues.index', $organisation) }}" class="btn btn-primary pull-right">View Issues</a>
                                 <p>Organisation ID: {{ $organisation->id }}
                             </div>
                         </article>

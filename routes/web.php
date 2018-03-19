@@ -18,8 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::group(['middleware' => 'auth'], function () {
+
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('organisations', 'OrganisationsController');
-    Route::resource('issues', 'IssuesController');
+    Route::get('organisations/{organisation}/issues', 'OrganisationIssuesController@index')->name('organisation.issues.index');
 });
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('issues', 'IssuesController');
+});

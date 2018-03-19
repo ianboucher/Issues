@@ -24,7 +24,6 @@ class IssuesController extends Controller
         $organisation = Organisation::find(Auth::user()->organisation_id);
         
         $issues = $organisation->issues->all();
-        // $issues = Issue::all();
 
         return view('issues.index', ['issues' => $issues]);
     }
@@ -58,7 +57,6 @@ class IssuesController extends Controller
      */
     public function show(Issue $issue)
     {
-        // $this->authorize('view', $issue);
         return view('issues.show', ['issue' => $issue]);
     }
 
