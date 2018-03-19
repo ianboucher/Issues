@@ -21,7 +21,11 @@ class IssuesController extends Controller
      */
     public function index()
     {
-        $organisation = Organisation::find(Auth::user()->organisation_id);
+        if (Auth::user()->hasRole('admin') && session()->has('org_id')) {
+            $organisation = Organisation::find(session('org_id'));
+        } else {
+            $organisation = Organisation::find(Auth::user()->organisation_id);
+        }
         
         $issues = $organisation->issues->all();
 
@@ -35,7 +39,8 @@ class IssuesController extends Controller
      */
     public function create()
     {
-        //
+        $organisation = Organisation::find(session('org_id'));
+        return view('issues.create', ['organisation' => $organisation]);
     }
 
     /**
@@ -46,7 +51,16 @@ class IssuesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $organisation = Organisation::find(session('org_id'));
+
+        $issue = $organisation->issues()->create([
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+            'severity' => $request->get('severity'),
+            'user_id' => Auth::user()->id,
+        ]);
+
+        return redirect()->route('issues.show', $issue);
     }
 
     /**

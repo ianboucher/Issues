@@ -28,7 +28,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li><a class="nav-link" href="{{ route('issues.index') }}">Issues</a></li>
-                        <li><a class="nav-link" href="{{ route('organisations.index') }}">Organisations</a></li>
+                        <li><a class="nav-link" href="{{ route('issues.create') }}">New Issue</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -38,6 +38,8 @@
                             <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                         @else
+                            <li><a class="nav-link" href="{{ route('organisations.index') }}">Organisation Management</a></li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>

@@ -30,7 +30,7 @@ class IssuePolicy
      */
     public function create(User $user)
     {
-        $user->hasRole('admin');
+        return $user->hasRole('admin');
     }
 
     /**
@@ -42,7 +42,7 @@ class IssuePolicy
      */
     public function update(User $user, Issue $issue)
     {
-        $user->hasRole('admin');
+        return $user->hasRole('admin');
     }
 
     /**
@@ -54,6 +54,6 @@ class IssuePolicy
      */
     public function delete(User $user, Issue $issue)
     {
-        $user->hasRole('admin');
+        return $user->hasRole('admin');
     }
 }

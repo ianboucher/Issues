@@ -12,7 +12,7 @@ class Issue extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'severity',
+        'title', 'description', 'severity', 'user_id'
     ];
 
     public function createdBy() 
