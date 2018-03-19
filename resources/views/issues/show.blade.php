@@ -13,6 +13,14 @@
                     {{ $issue->description }}
                 </div>
             </div>
+            <div class="pull-right">
+                <a href="{{ route('issues.edit', $issue) }}" class="btn btn-primary">Edit</a>
+                <form method="POST" action="{{ route('issues.destroy', $issue) }}">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

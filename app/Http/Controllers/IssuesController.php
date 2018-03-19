@@ -40,6 +40,7 @@ class IssuesController extends Controller
     public function create()
     {
         $organisation = Organisation::find(session('org_id'));
+
         return view('issues.create', ['organisation' => $organisation]);
     }
 
@@ -82,7 +83,12 @@ class IssuesController extends Controller
      */
     public function edit(Issue $issue)
     {
-        //
+        $organisation = Organisation::find(session('org_id'));
+
+        return view('issues.edit', [
+            'issue' => $issue,
+            'organisation' => $organisation,
+        ]);
     }
 
     /**
@@ -94,7 +100,13 @@ class IssuesController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
-        //
+        $issue->update([
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+            'severity' => $request->get('severity'),
+        ]);
+
+        return redirect()->route('issues.show', $issue);
     }
 
     /**
@@ -105,6 +117,8 @@ class IssuesController extends Controller
      */
     public function destroy(Issue $issue)
     {
-        //
+        $issue->delete();
+
+        return redirect()->route('issues.index');
     }
 }
