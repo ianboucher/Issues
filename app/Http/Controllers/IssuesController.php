@@ -70,7 +70,7 @@ class IssuesController extends Controller
      */
     public function show(Issue $issue)
     {
-        return view('issues.show', ['issue' => $issue]);
+        return view("issues.{$issue->type()}.show", ['issue' => $issue]);
     }
 
     /**
@@ -81,9 +81,9 @@ class IssuesController extends Controller
      */
     public function edit(Issue $issue)
     {
-        $organisation = Organisation::find(session('org_id'));
+        $organisation = Organisation::find(session('org_id')); // currently used to display org name in view...
 
-        return view('issues.edit', [
+        return view("issues.{$issue->type()}.edit", [
             'issue' => $issue,
             'organisation' => $organisation,
         ]);
