@@ -19,6 +19,13 @@ class OrganisationsController extends Controller
         return view('admin.organisations.index', ['organisations' => $organisations]);
     }
 
+    public function switchOrg(Request $request, Organisation $organisation)
+    {
+        $request->session()->put(['org_id' => $organisation->id]);
+
+        return redirect()->route('issues.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

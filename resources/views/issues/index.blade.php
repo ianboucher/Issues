@@ -13,6 +13,7 @@
                         <article>
                             <div class="level">
                                 <h4 class="flex">
+                                    <div class="pull-right"><span class="badge badge-info">{{ $issue->type() }}</span></div>
                                     <a href="{{ route('issues.show', $issue) }}">{{ $issue->title}}</a>
                                 </h4>
                                 <p>Organisation ID: {{ $issue->organisation_id }}

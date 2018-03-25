@@ -26,9 +26,21 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="nav navbar-nav">
                         <li><a class="nav-link" href="{{ route('issues.index') }}">Issues</a></li>
                         <li><a class="nav-link" href="{{ route('issues.create') }}">New Issue</a></li>
+                        <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Issue Types <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @foreach ($issueables as $issueable)
+                                        <li>
+                                            <a href="/issues/category/{{$issueable}}">{{ $issueable }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

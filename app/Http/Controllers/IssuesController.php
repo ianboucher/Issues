@@ -19,16 +19,14 @@ class IssuesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        if (Auth::user()->hasRole('admin') && session()->has('org_id')) {
-            $organisation = Organisation::find(session('org_id'));
+    public function index(Request $request, $type = null)
+    {   
+        if ($type) {
+            $issues = Issue::where('issuable_type', $type)->get();
         } else {
-            $organisation = Organisation::find(Auth::user()->organisation_id);
+            $issues = Issue::all(); // scoped to org with global scope
         }
         
-        $issues = $organisation->issues->all();
-
         return view('issues.index', ['issues' => $issues]);
     }
 

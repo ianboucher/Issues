@@ -21,9 +21,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('organisations', 'OrganisationsController');
-    Route::get('organisations/{organisation}/issues', 'OrganisationIssuesController@index')->name('organisation.issues.index');
+    Route::get('switch/organisations/{organisation}', 'OrganisationsController@switchOrg')->name('switch-org');
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('issues/category/{issueable_type}', 'IssuesController@index');
+
     Route::resource('issues', 'IssuesController');
+    Route::resource('bugs.issues', 'IssuesController');
+    Route::resource('features.issues', 'IssuesController');
+    Route::resource('tests.issues', 'IssuesController');
 });

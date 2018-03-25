@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a href="#">{{ $issue->createdBy->name }}</a> posted...&nbsp;&nbsp;
-                    {{ $issue->title }}
+                    {{ $issue->title }} &nbsp;&nbsp; | &nbsp;&nbsp; <span class="badge badge-info">{{ $issue->type() }}</span>
                 </div>
                 <div class="panel-body">
                     {{ $issue->description }}

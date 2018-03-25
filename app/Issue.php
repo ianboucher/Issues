@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Scopes\OrganisationScope;
 
 class Issue extends Model
 {
@@ -15,6 +16,12 @@ class Issue extends Model
         'title', 'description', 'severity', 'user_id'
     ];
 
+    protected static function boot() {
+        parent::boot();
+
+        static::addGlobalScope(new OrganisationScope);
+    }
+
     public function createdBy() 
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -23,5 +30,15 @@ class Issue extends Model
     public function organisation() 
     {
         return $this->belongsTo(Organisation::class);
+    }
+
+    public function issuable()
+    {
+        return $this->morphTo();
+    }
+
+    public function type()
+    {
+        return class_basename($this->issuable_type);
     }
 }
