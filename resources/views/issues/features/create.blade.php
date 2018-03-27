@@ -22,16 +22,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="heading">Heading</label>
-                        <input name="heading" type="text" class="form-control" id="heading" placeholder="Heading" value="{{ old('heading') }}" required/>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="content">Content</label>
-                            <textarea name="content" class="form-control" id="content" rows="8" required>{{ old('content') }}</textarea>
-                        </div>
-
-                        <div class="form-group">
                             <label for="severity">Severity</label>
                             <input name="severity" type="number" class="form-control" id="severity" placeholder="Severity" value="{{ old('severity') }}" required/>
                         </div>

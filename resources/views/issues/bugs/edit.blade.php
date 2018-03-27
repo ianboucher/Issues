@@ -8,7 +8,7 @@
                 <div class="panel-heading">Update this Issue for {{ $organisation->name }}</div>
 
                 <div class="panel-body">
-                    <form method="POST" action="{{ route('issues.update', $issue) }}">
+                    <form method="POST" action="{{ route('bugs-issues.update', $issue) }}">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
 

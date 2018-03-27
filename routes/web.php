@@ -28,7 +28,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('issues/category/{issueable_type}', 'IssuesController@index');
 
     Route::resource('issues', 'IssuesController');
-    Route::resource('bugs.issues', 'IssuesController');
+
+    Route::post('bugs-issues/', 'BugsIssuesController@store')->name('bugs-issues.store');
+    Route::patch('bugs-issues/{issue}', 'BugsIssuesController@update')->name('bugs-issues.update');
+
     Route::resource('features.issues', 'IssuesController');
     Route::resource('tests.issues', 'IssuesController');
 });

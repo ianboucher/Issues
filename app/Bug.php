@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bug extends Model
 {
+    protected $fillable = [
+        'heading',
+        'content',
+    ];
+
     public function organisation()
     {
         return $this->belongsTo(Organisation::class);
